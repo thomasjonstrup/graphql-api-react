@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const {buildSchema} = require('graphql');
 
+const _PORT  = process.env.PORT || 3000;
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -38,5 +40,5 @@ app.use(
 );
 
 app.listen(3000, () => {
-	console.log('LISTEN ON PORT 3000');
+	console.log(`LISTEN ON PORT ${_PORT}`);
 });
