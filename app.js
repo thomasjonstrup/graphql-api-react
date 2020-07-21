@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const graphqlHttp = require('express-graphql');
+const { graphqlHTTP } = require('express-graphql');
 const {buildSchema} = require('graphql');
 
 const _PORT  = process.env.PORT || 3000;
@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use(
 	'/graphql',
-	graphqlHttp({
+	graphqlHTTP({
 		schema: buildSchema(`
 			type RootQuery {
 				events: [String!]!
@@ -33,9 +33,9 @@ app.use(
 			createEvent: (args) => {
 				const eventName = args.name;
 				return eventName;
-			}
+			},
 		},
-		graphiql: true
+		graphiql: true,
 	})
 );
 
